@@ -2,7 +2,7 @@ name: Checkly Trigger
 description:  CLI trigger for Checkly
 author: tj-actions
 inputs:
-  triggerURL:
+  trigger-url:
     description: 'The URL of the Checkly trigger.'
     required: true
   deployment:
@@ -17,7 +17,7 @@ inputs:
     description: 'Git hash, tag, version "v1.0.1" or other identifier making this deploy unique.'
     required: false
     default: ${{ github.sha }}
-  environmentUrl:
+  environment-url:
     description: 'A staging or preview URL injected as ENVIRONMENT_URL in browser checks and auto-replaced in API checks.'
     required: false
     default: ''
@@ -25,11 +25,11 @@ inputs:
     description: 'An optional data center location where to run your triggered check. Use the shorter names here, like eu-west-1 or us-west-1. Defaults to us-east-1.'
     required: false
     default: ''
-  environmentName:
+  environment-name:
     description: 'The environment name of your triggered check, i.e. "production".'
     required: false
     default: ''
-  deploymentId:
+  deployment-id:
     description: 'The deployment id of your triggered check, i.e. "deployment-1".'
     required: false
     default: ''
@@ -47,11 +47,11 @@ runs:
         INPUT_DEPLOYMENT: ${{ inputs.deployment }}
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_SHA: ${{ inputs.sha }}
-        INPUT_ENVIRONMENT_URL: ${{ inputs.environmentUrl }}
+        INPUT_ENVIRONMENT_URL: ${{ inputs.environment-url }}
         INPUT_RUN_LOCATION: ${{ inputs.runLocation }}
-        INPUT_ENVIRONMENT_NAME: ${{ inputs.environmentName }}
-        INPUT_DEPLOYMENT_ID: ${{ inputs.deploymentId }}
-        INPUT_TRIGGER_URL: ${{ inputs.triggerURL }}
+        INPUT_ENVIRONMENT_NAME: ${{ inputs.environment-name }}
+        INPUT_DEPLOYMENT_ID: ${{ inputs.deployment-id }}
+        INPUT_TRIGGER_URL: ${{ inputs.trigger-url }}
 
 branding:
   icon: alert-circle

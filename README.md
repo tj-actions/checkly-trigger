@@ -3,17 +3,17 @@
 [![Public workflows that use this action.](https://img.shields.io/endpoint?url=https%3A%2F%2Fused-by.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3Dtj-actions%2Fdocker-action%26badge%3Dtrue)](https://github.com/search?o=desc\&q=tj-actions+docker-action+path%3A.github%2Fworkflows+language%3AYAML\&s=\&type=Code)
 
 ## checkly-trigger
+CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/)
 
-See: https://www.checklyhq.com/docs/cicd/triggers/
-
-Template Docker action
 
 ```yaml
 ...
     steps:
       - uses: actions/checkout@v2
-      - name: Docker Action
+      - name: Checkly Trigger
         uses: tj-actions/docker-action@v1
+        with:
+          trigger-url: ${{ secrets.TRIGGER_URL }}
 ```
 
 ## Inputs
