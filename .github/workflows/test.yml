@@ -19,3 +19,5 @@ jobs:
         uses: reviewdog/action-shellcheck@v1
       - name: Run checkly-trigger
         uses: ./
+        with:
+          trigger-url: ${{ secrets.TRIGGER_URL }}

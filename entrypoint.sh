@@ -37,4 +37,4 @@ if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
   TRIGGER_URL="$TRIGGER_URL&deploymentId=$INPUT_DEPLOYMENT_ID"
 fi
 
-curl -X GET "$INPUT_TRIGGER_URL"
+curl -X GET --fail "$INPUT_TRIGGER_URL"
