@@ -10,8 +10,13 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     name: Test checkly-trigger
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [ubuntu-latest, windows-latest, macos-latest, macos-11, windows-2022]
+        deployment: ["true", "false"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,4 +25,9 @@ jobs:
       - name: Run checkly-trigger
         uses: ./
         with:
+          deployment: true
+          environment-url: ${{ secrets.ENVIRONMENT_URL }}
+          run-location: ${{ secrets.RUN_LOCATION }}
+          environment-name: ${{ secrets.ENVIRONMENT_NAME }}
+          deployment-id: ${{ secrets.DEPLOYMENT_ID }}
           trigger-url: ${{ secrets.TRIGGER_URL }}

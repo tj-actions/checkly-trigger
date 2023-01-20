@@ -12,7 +12,7 @@ inputs:
   repository:
     description: 'Repository name, i.e. "checkly/backend-api".'
     required: false
-    default: ''
+    default: ${{ github.repository }}
   sha:
     description: 'Git hash, tag, version "v1.0.1" or other identifier making this deploy unique.'
     required: false
@@ -21,10 +21,10 @@ inputs:
     description: 'A staging or preview URL injected as ENVIRONMENT_URL in browser checks and auto-replaced in API checks.'
     required: false
     default: ''
-  runLocation:
-    description: 'An optional data center location where to run your triggered check. Use the shorter names here, like eu-west-1 or us-west-1. Defaults to us-east-1.'
+  run-location:
+    description: 'An optional data center location where to run your triggered check. Use the shorter names here, like eu-west-1 or us-west-1.'
     required: false
-    default: ''
+    default: 'us-east-1'
   environment-name:
     description: 'The environment name of your triggered check, i.e. "production".'
     required: false
@@ -48,7 +48,7 @@ runs:
         INPUT_REPOSITORY: ${{ inputs.repository }}
         INPUT_SHA: ${{ inputs.sha }}
         INPUT_ENVIRONMENT_URL: ${{ inputs.environment-url }}
-        INPUT_RUN_LOCATION: ${{ inputs.runLocation }}
+        INPUT_RUN_LOCATION: ${{ inputs.run-location }}
         INPUT_ENVIRONMENT_NAME: ${{ inputs.environment-name }}
         INPUT_DEPLOYMENT_ID: ${{ inputs.deployment-id }}
         INPUT_TRIGGER_URL: ${{ inputs.trigger-url }}
