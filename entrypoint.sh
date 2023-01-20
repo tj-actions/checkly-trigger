@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if [ -z "$INPUT_TRIGGER_URL" ]; then
+  echo "Trigger URL is required"
+  exit 1
+fi
+
 TRIGGER_URL=$INPUT_TRIGGER_URL
 
 if [ -n "$INPUT_DEPLOYMENT" ]; then
