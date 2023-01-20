@@ -25,7 +25,7 @@ jobs:
       - name: Run checkly-trigger
         uses: ./
         with:
-          deployment: true
+          deployment: ${{ matrix.deployment }}
           environment-url: ${{ secrets.ENVIRONMENT_URL }}
           run-location: ${{ secrets.RUN_LOCATION }}
           environment-name: ${{ secrets.ENVIRONMENT_NAME }}
