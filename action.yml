@@ -1,17 +1,58 @@
-name: Docker Action
-description:  Template Docker action
+name: Checkly Trigger
+description:  CLI trigger for Checkly
 author: tj-actions
 inputs:
-  token:
-    description: 'GITHUB_TOKEN or a Repo scoped PAT'
+  triggerURL:
+    description: 'The URL of the Checkly trigger.'
     required: true
-    default: ${{ github.token }}
+  deployment:
+    description: 'Set to true to record each trigger invocation as a deployment event.'
+    required: false
+    default: 'false'
+  repository:
+    description: 'Repository name, i.e. "checkly/backend-api".'
+    required: false
+    default: ''
+  sha:
+    description: 'Git hash, tag, version "v1.0.1" or other identifier making this deploy unique.'
+    required: false
+    default: ${{ github.sha }}
+  environmentUrl:
+    description: 'A staging or preview URL injected as ENVIRONMENT_URL in browser checks and auto-replaced in API checks.'
+    required: false
+    default: ''
+  runLocation:
+    description: 'An optional data center location where to run your triggered check. Use the shorter names here, like eu-west-1 or us-west-1. Defaults to us-east-1.'
+    required: false
+    default: ''
+  environmentName:
+    description: 'The environment name of your triggered check, i.e. "production".'
+    required: false
+    default: ''
+  deploymentId:
+    description: 'The deployment id of your triggered check, i.e. "deployment-1".'
+    required: false
+    default: ''
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.token }}
+  using: 'composite'
+  steps:
+    - run: |
+        bash $GITHUB_ACTION_PATH/entrypoint.sh
+      id: checkly-trigger
+      shell: bash
+      env:
+        # INPUT_<VARIABLE_NAME> is not available in Composite run steps
+        # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
+        INPUT_DEPLOYMENT: ${{ inputs.deployment }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_SHA: ${{ inputs.sha }}
+        INPUT_ENVIRONMENT_URL: ${{ inputs.environmentUrl }}
+        INPUT_RUN_LOCATION: ${{ inputs.runLocation }}
+        INPUT_ENVIRONMENT_NAME: ${{ inputs.environmentName }}
+        INPUT_DEPLOYMENT_ID: ${{ inputs.deploymentId }}
+        INPUT_TRIGGER_URL: ${{ inputs.triggerURL }}
+
 branding:
-  icon: check-square
+  icon: alert-circle
   color: white

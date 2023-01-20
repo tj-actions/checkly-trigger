@@ -1,3 +1,35 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
+
+TRIGGER_URL=$INPUT_TRIGGER_URL
+
+if [ -n "$INPUT_DEPLOYMENT" ]; then
+  TRIGGER_URL="$TRIGGER_URL&deployment=$INPUT_DEPLOYMENT"
+fi
+
+if [ -n "$INPUT_REPOSITORY" ]; then
+  TRIGGER_URL="$TRIGGER_URL&repository=$INPUT_REPOSITORY"
+fi
+
+if [ -n "$INPUT_SHA" ]; then
+  TRIGGER_URL="$TRIGGER_URL&sha=$INPUT_SHA"
+fi
+
+if [ -n "$INPUT_ENVIRONMENT_URL" ]; then
+  TRIGGER_URL="$TRIGGER_URL&environmentUrl=$INPUT_ENVIRONMENT_URL"
+fi
+
+if [ -n "$INPUT_RUN_LOCATION" ]; then
+  TRIGGER_URL="$TRIGGER_URL&runLocation=$INPUT_RUN_LOCATION"
+fi
+
+if [ -n "$INPUT_ENVIRONMENT_NAME" ]; then
+  TRIGGER_URL="$TRIGGER_URL&environmentName=$INPUT_ENVIRONMENT_NAME"
+fi
+
+if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
+  TRIGGER_URL="$TRIGGER_URL&deploymentId=$INPUT_DEPLOYMENT_ID"
+fi
+
+curl -X GET "$INPUT_TRIGGER_URL"
