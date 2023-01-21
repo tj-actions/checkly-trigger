@@ -9,7 +9,7 @@ CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/)
 ```yaml
 ...
     steps:
-      - uses: actions/checkout@v2
+...
       - name: Checkly Trigger
         uses: tj-actions/checkly-trigger@v1
         with:
