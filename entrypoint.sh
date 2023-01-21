@@ -40,7 +40,7 @@ fi
 req_with_retries() {
     local delay=10
 
-    for i in $(seq 1 5); do
+    for i in $(seq 1 10); do
         curl --connect-timeout 300 -sf "$INPUT_TRIGGER_URL" && break
         sleep $delay
         echo "$i retries"
