@@ -4,7 +4,7 @@
 
 ## checkly-trigger
 
-CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/).
+CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/)
 
 ```yaml
 ...
