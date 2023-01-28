@@ -2,7 +2,15 @@
 
 ## [v1](https://github.com/tj-actions/checkly-trigger/tree/v1) (2023-01-28)
 
-[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v1.1.3...v1)
+[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v1.2.0...v1)
+
+## [v1.2.0](https://github.com/tj-actions/checkly-trigger/tree/v1.2.0) (2023-01-28)
+
+[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v1.1.3...v1.2.0)
+
+**Merged pull requests:**
+
+- Upgraded to v1.1.3 [\#13](https://github.com/tj-actions/checkly-trigger/pull/13) ([jackton1](https://github.com/jackton1))
 
 ## [v1.1.3](https://github.com/tj-actions/checkly-trigger/tree/v1.1.3) (2023-01-28)
 
