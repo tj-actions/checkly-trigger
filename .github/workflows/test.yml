@@ -28,9 +28,10 @@ jobs:
       - name: Run checkly-trigger
         uses: ./
         with:
+          repository: jackton1/api
+          sha: 054fa5f86239f4fa22a058974bf616489c1670b9
           deployment: ${{ matrix.deployment }}
           environment-url: ${{ secrets.ENVIRONMENT_URL }}
           run-location: ${{ secrets.RUN_LOCATION }}
           environment-name: ${{ secrets.ENVIRONMENT_NAME }}
-          deployment-id: ${{ secrets.DEPLOYMENT_ID }}
           trigger-url: ${{ secrets.TRIGGER_URL }}
