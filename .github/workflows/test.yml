@@ -29,6 +29,7 @@ jobs:
         uses: ./
         with:
           repository: jackton1/api
+          sha: ''
           run-location: ${{ secrets.RUN_LOCATION }}
           environment-name: ${{ secrets.ENVIRONMENT_NAME }}
           trigger-url: ${{ secrets.TRIGGER_URL }}
