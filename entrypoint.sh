@@ -39,11 +39,13 @@ if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
   TRIGGER_URL="$TRIGGER_URL&deploymentId=$INPUT_DEPLOYMENT_ID"
 fi
 
+echo "URL: $TRIGGER_URL"
+
 req_with_retries() {
     local delay=10
 
     for i in $(seq 1 10); do
-        curl --connect-timeout 300 -svf "$INPUT_TRIGGER_URL" && break
+        curl --connect-timeout 300 -sf "$TRIGGER_URL" && break
         sleep $delay
         echo "$i retries"
         
