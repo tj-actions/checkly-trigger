@@ -28,7 +28,7 @@ jobs:
       - name: Run checkly-trigger
         uses: ./
         with:
-          repository: 'jackton1/api'
+          repository: ''
           sha: ''
           deployment: ''
           run-location: ${{ secrets.RUN_LOCATION }}
