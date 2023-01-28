@@ -44,7 +44,14 @@ req_with_retries() {
         curl --connect-timeout 300 -sf "$INPUT_TRIGGER_URL" && break
         sleep $delay
         echo "$i retries"
+        
+        if [[ $i == 10 ]];
+          echo "::error::Check failed"
+          exit 1
+        fi
     done
+    
+    
 }
 
 req_with_retries
