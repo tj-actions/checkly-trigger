@@ -45,7 +45,7 @@ req_with_retries() {
         sleep $delay
         echo "$i retries"
         
-        if [[ $i == 10 ]];
+        if [[ $i == 10 ]]; then
           echo "::error::Check failed"
           exit 1
         fi
