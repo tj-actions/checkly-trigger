@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+echo "::group::checkly-trigger"
+
 if [ -z "$INPUT_TRIGGER_URL" ]; then
   echo "Trigger URL is required"
   exit 1
@@ -55,3 +57,5 @@ req_with_retries() {
 }
 
 req_with_retries
+
+echo "::endgroup::"
