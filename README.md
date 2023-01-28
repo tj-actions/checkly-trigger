@@ -10,7 +10,7 @@ CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/).
 ...
     steps:
       - name: Checkly Trigger
-        uses: tj-actions/checkly-trigger@v1
+        uses: tj-actions/checkly-trigger@v2
         with:
           trigger-url: ${{ secrets.TRIGGER_URL }}
 ```
