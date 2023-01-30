@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 echo "::group::checkly-trigger"
 
@@ -9,14 +9,23 @@ if [ -z "$INPUT_TRIGGER_URL" ]; then
   exit 1
 fi
 
+TRIGGER_URL="$INPUT_TRIGGER_URL"
+
 QUERY_PARAMETERS=()
 
 if [ -n "$INPUT_SHA" ]; then
   QUERY_PARAMETERS+=("sha=$INPUT_SHA")
 fi
 
-if [ -n "$INPUT_DEPLOYMENT" ]; then
+if [ "$INPUT_DEPLOYMENT" == "true" ]; then
   QUERY_PARAMETERS+=("deployment=$INPUT_DEPLOYMENT")
+
+  if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
+    QUERY_PARAMETERS+=("deploymentId=$INPUT_DEPLOYMENT_ID")
+  else
+    echo "Deployment ID is required"
+    exit 1
+  fi
 fi
 
 if [ -n "$INPUT_REPOSITORY" ]; then
@@ -35,13 +44,11 @@ if [ -n "$INPUT_ENVIRONMENT_NAME" ]; then
   QUERY_PARAMETERS+=("environmentName=$INPUT_ENVIRONMENT_NAME")
 fi
 
-if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
-  QUERY_PARAMETERS+=("deploymentId=$INPUT_DEPLOYMENT_ID")
+QUERY_PARAMETERS_STRING=$(IFS='&'; echo "${QUERY_PARAMETERS[*]}")
+
+if [ -n "$QUERY_PARAMETERS_STRING" ]; then
+  TRIGGER_URL="$TRIGGER_URL?$QUERY_PARAMETERS_STRING"
 fi
-
-QUERY_PARAMETERS_STRING=$(IFS=& ; echo "${QUERY_PARAMETERS[*]}")
-
-TRIGGER_URL="$INPUT_TRIGGER_URL?$QUERY_PARAMETERS_STRING"
 
 echo "URL: $TRIGGER_URL"
 
@@ -49,7 +56,7 @@ req_with_retries() {
     local delay=10
 
     for i in $(seq 1 10); do
-        curl --connect-timeout 300 -svf "$TRIGGER_URL" && break
+        curl --connect-timeout 300 -sf "$TRIGGER_URL" && break
         sleep $delay
         echo "$i retries"
         
