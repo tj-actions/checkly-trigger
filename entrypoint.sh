@@ -9,6 +9,11 @@ if [ -z "$INPUT_TRIGGER_URL" ]; then
   exit 1
 fi
 
+if [ -z "$INPUT_DEPLOYMENT" ]; then
+  echo "Deployment is required"
+  exit 1
+fi
+
 TRIGGER_URL="$INPUT_TRIGGER_URL?deployment=$INPUT_DEPLOYMENT"
 
 if [ -n "$INPUT_SHA" ]; then
