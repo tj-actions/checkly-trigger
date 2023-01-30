@@ -1,12 +1,21 @@
 # Changelog
 
+## [v2](https://github.com/tj-actions/checkly-trigger/tree/v2) (2023-01-30)
+
+[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v2.0.1...v2)
+
+## [v2.0.1](https://github.com/tj-actions/checkly-trigger/tree/v2.0.1) (2023-01-30)
+
+[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v2.0.0...v2.0.1)
+
+**Merged pull requests:**
+
+- fix: bug with entrypoint.sh [\#16](https://github.com/tj-actions/checkly-trigger/pull/16) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2 [\#15](https://github.com/tj-actions/checkly-trigger/pull/15) ([jackton1](https://github.com/jackton1))
+
 ## [v2.0.0](https://github.com/tj-actions/checkly-trigger/tree/v2.0.0) (2023-01-28)
 
-[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v2...v2.0.0)
-
-## [v2](https://github.com/tj-actions/checkly-trigger/tree/v2) (2023-01-28)
-
-[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v1...v2)
+[Full Changelog](https://github.com/tj-actions/checkly-trigger/compare/v1...v2.0.0)
 
 **Merged pull requests:**
 
