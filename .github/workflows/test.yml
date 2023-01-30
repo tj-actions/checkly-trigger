@@ -30,7 +30,6 @@ jobs:
         with:
           repository: ''
           sha: ''
-          deployment: ''
           run-location: ${{ secrets.RUN_LOCATION }}
           environment-name: ${{ secrets.ENVIRONMENT_NAME }}
           trigger-url: ${{ secrets.TRIGGER_URL }}
