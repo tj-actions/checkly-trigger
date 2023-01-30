@@ -15,8 +15,15 @@ if [ -n "$INPUT_SHA" ]; then
   QUERY_PARAMETERS+=("sha=$INPUT_SHA")
 fi
 
-if [ -n "$INPUT_DEPLOYMENT" ]; then
+if [ "$INPUT_DEPLOYMENT" == "true" ]; then
   QUERY_PARAMETERS+=("deployment=$INPUT_DEPLOYMENT")
+
+  if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
+    QUERY_PARAMETERS+=("deploymentId=$INPUT_DEPLOYMENT_ID")
+  else
+    echo "Deployment ID is required"
+    exit 1
+  fi
 fi
 
 if [ -n "$INPUT_REPOSITORY" ]; then
@@ -33,10 +40,6 @@ fi
 
 if [ -n "$INPUT_ENVIRONMENT_NAME" ]; then
   QUERY_PARAMETERS+=("environmentName=$INPUT_ENVIRONMENT_NAME")
-fi
-
-if [ -n "$INPUT_DEPLOYMENT_ID" ]; then
-  QUERY_PARAMETERS+=("deploymentId=$INPUT_DEPLOYMENT_ID")
 fi
 
 QUERY_PARAMETERS_STRING=$(IFS='&'; echo "${QUERY_PARAMETERS[*]}")
