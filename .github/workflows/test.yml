@@ -16,7 +16,6 @@ jobs:
       fail-fast: false
       matrix:
         platform: [ubuntu-latest, windows-latest, macos-latest, macos-11, windows-2022]
-        deployment: ["true", "false"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
