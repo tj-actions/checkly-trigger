@@ -9,10 +9,10 @@ if [ -z "$INPUT_TRIGGER_URL" ]; then
   exit 1
 fi
 
-TRIGGER_URL="$INPUT_TRIGGER_URL?sha=$INPUT_SHA"
+TRIGGER_URL="$INPUT_TRIGGER_URL?deployment=$INPUT_DEPLOYMENT"
 
-if [ -n "$INPUT_DEPLOYMENT" ]; then
-  TRIGGER_URL="$TRIGGER_URL&deployment=$INPUT_DEPLOYMENT"
+if [ -n "$INPUT_SHA" ]; then
+  TRIGGER_URL="$TRIGGER_URL&sha=$INPUT_SHA"
 fi
 
 if [ -n "$INPUT_REPOSITORY" ]; then
