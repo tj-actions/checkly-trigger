@@ -19,16 +19,16 @@ CLI trigger for [checkly](https://www.checklyhq.com/docs/cicd/triggers/).
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|      INPUT       |  TYPE  | REQUIRED |           DEFAULT            |                                                               DESCRIPTION                                                               |
-|------------------|--------|----------|------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-|    deployment    | string |  false   |          `"false"`           |                                 Set to true to record each<br>trigger invocation as a deployment event.                                 |
-|  deployment-id   | string |  false   |                              |                                   The deployment id of your triggered<br>check, i.e. "deployment-1".                                    |
-| environment-name | string |  false   |                              |                                   The environment name of your triggered<br>check, i.e. "production".                                   |
-| environment-url  | string |  false   |                              |             A staging or preview URL injected<br> as ENVIRONMENT\_URL in browser checks and<br>auto-replaced in API checks.              |
-|    repository    | string |  false   | `"${{ github.repository }}"` |                                              Repository name, i.e. "checkly/backend-api".                                               |
-|   run-location   | string |  false   |        `"us-east-1"`         | An optional data center location where<br> to run your triggered check. Use<br> the shorter names here, like eu-west-1<br>or us-west-1. |
-|       sha        | string |  false   |    `"${{ github.sha }}"`     |                            Git hash, tag, version "v1.0.1" or<br>other identifier making this deploy unique.                            |
-|   trigger-url    | string |   true   |                              |                                                     The URL of the Checkly trigger.                                                     |
+|      INPUT       |  TYPE  | REQUIRED |           DEFAULT            |                                                                DESCRIPTION                                                                |
+|------------------|--------|----------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+|    deployment    | string |  false   |          `"false"`           |                               Set to true to record <br>each trigger invocation as a <br>deployment event.                                |
+|  deployment-id   | string |  false   |                              |                                   The deployment id of your <br>triggered check, i.e. "deployment-1".                                     |
+| environment-name | string |  false   |                              |                                   The environment name of your <br>triggered check, i.e. "production".                                    |
+| environment-url  | string |  false   |                              |           A staging or preview URL <br>injected as ENVIRONMENT\_URL in browser <br>checks and auto-replaced in API <br>checks.             |
+|    repository    | string |  false   | `"${{ github.repository }}"` |                                               Repository name, i.e. "checkly/backend-api".                                                |
+|   run-location   | string |  false   |        `"us-east-1"`         | An optional data center location <br>where to run your triggered <br>check. Use the shorter names <br>here, like eu-west-1 or us-west-1.  |
+|       sha        | string |  false   |    `"${{ github.sha }}"`     |                          Git hash, tag, version "v1.0.1" <br>or other identifier making this <br>deploy unique.                           |
+|   trigger-url    | string |   true   |                              |                                                   The URL of the Checkly <br>trigger.                                                     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
